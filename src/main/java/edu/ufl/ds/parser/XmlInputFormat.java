@@ -24,14 +24,7 @@ public class XmlInputFormat extends  TextInputFormat {
 
     @Override
     public RecordReader<LongWritable,Text> createRecordReader(InputSplit is, TaskAttemptContext tac)  {
-        
-        
-    
         return new XmlRecordReader();
-
-    
-
-        
     }
   public static class XmlRecordReader extends RecordReader<LongWritable,Text> {
     private  byte[] startTag;
@@ -59,11 +52,6 @@ public class XmlInputFormat extends  TextInputFormat {
                 FileSystem fs = file.getFileSystem(tac.getConfiguration());
                 fsin = fs.open(fileSplit.getPath());
                 fsin.seek(start);
-
-              
-
-
-            
         }
 
         @Override

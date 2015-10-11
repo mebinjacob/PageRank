@@ -25,7 +25,7 @@ public class PageCount extends Configured implements Tool {
     public int run(String args[]) {
         try {
             Configuration conf = new Configuration();
-
+            conf.set("mapreduce.output.textoutputformat.separator", "=");
             Job job = Job.getInstance(conf);
             job.setJarByClass(PageCount.class);
 
