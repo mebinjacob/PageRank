@@ -19,7 +19,7 @@ public class PageCount extends Configured implements Tool {
 
     public static void main(String[] args) throws Exception {
         int res = ToolRunner.run(new Configuration(), new PageCount(), args);
-        System.exit(res);
+//        System.exit(res);
 	}
 
     public int run(String args[]) {

@@ -5,17 +5,13 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class InlinkToOutlinkReducer extends Reducer<Text, Text, Text, Text> {
+public class SortReducer extends Reducer<Text, Text, Text, Text> {
 
 	public void reduce(Text key, Iterable<Text> values, Context context)
 			throws IOException, InterruptedException {
-
-		StringBuffer sb = new StringBuffer();
-		for (Text v : values) {
-			sb.append(" " + v.toString());
-		}
-
-		context.write(key, new Text(sb.toString()));
+		if (Float.parseFloat(key.toString().trim()) > 5 / (float) PageRanker.N)
+			for (Text t : values) {
+				context.write(new Text(t), key);
+			}
 	}
-
 }

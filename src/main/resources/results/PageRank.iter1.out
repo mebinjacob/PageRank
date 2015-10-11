@@ -1,0 +1,8 @@
+AccessibleComputing;Anarchism:0.0984375
+AfghanistanCommunications;:0.054166667
+AfghanistanGeography;:0.054166667
+AfghanistanHistory;AfghanistanCommunications	 AfghanistanGeography:0.071875
+AfghanistanMilitary;Anarchism	 AccessibleComputing:0.071875
+AfghanistanPeople;AccessibleComputing:0.018749997
+AfghanistanTransportations;AfghanistanMilitary:0.018749997
+Anarchism;AfghanistanHistory:0.0984375

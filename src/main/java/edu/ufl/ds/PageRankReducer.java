@@ -23,6 +23,8 @@ public class PageRankReducer extends Reducer<Text, Text, Text, FloatWritable> {
 				node = val.toString();
 			}
 		}
+		float d = 0.85f;
+		sum = (1-d)/(float)PageRanker.N + sum*d;
 		if(node != null && !node.trim().isEmpty()){
 			if(node.equals("###")){
 				context.write(new Text(key.toString()+ ";"), new FloatWritable(sum));	

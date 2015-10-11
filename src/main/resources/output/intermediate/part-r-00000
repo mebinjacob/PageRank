@@ -1,0 +1,14 @@
+AccessibleComputing	 AfghanistanPeople AfghanistanMilitary
+===	 AfghanistanMilitary
+AfghanistanCommunications	 AfghanistanHistory
+AfghanistanGeography	 AfghanistanHistory
+AfghanistanHistory	 Anarchism
+AfghanistanMilitary	 AfghanistanTransportations
+AfghanistanPeople	
+AfghanistanTransportations	
+Anarchism	 AccessibleComputing AfghanistanMilitary
+===	 AfghanistanCommunications
+===	 AfghanistanPeople
+===	 AfghanistanGeography
+===	 AfghanistanHistory
+===	 AfghanistanTransportations

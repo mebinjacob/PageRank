@@ -10,32 +10,34 @@ public class PageRankMapper extends Mapper<Text, Text, Text, Text> {
 	public void map(Text key, Text value, Context context) throws IOException,
 			InterruptedException {
 		float p = 0;
-		int noOfNeighbours = value.toString().split(":")[0].split(" ").length;
-		FloatWritable pageRank = null;
-		if (value.toString().split(":").length != 2) { // this is the first
-														// iteration
-			pageRank = new FloatWritable((float) 1 / PageRanker.N);
+		String[] split = value.toString().split(":");
+		int noOfNeighbours = split[0].split(" ").length;
+		float pageRank = 0.0f;
+		if (!value.toString().contains(":")) { // this is the first
+												// iteration
+			pageRank = (float) 1 / (float) PageRanker.N;
 		} else {
-			pageRank = new FloatWritable(Float.parseFloat(value.toString()
-					.split(":")[1].trim()));
+			pageRank = Float.parseFloat(split[split.length - 1].trim());
 		}
-		p = pageRank.get() / noOfNeighbours;
-		// -- should not be required
+		p = pageRank / (float) noOfNeighbours;
 
 		// for all neighbours do the below..
-		for (String neighbour : value.toString().split(":")[0].split("\t")) {
+		for (String neighbour : split[0].split(" ")) {
 			if (!neighbour.trim().isEmpty()) {
 				try {
-					context.write(new Text(neighbour),
-							new Text(new Float(p).toString()));
+					context.write(new Text(neighbour.trim()), new Text(
+							new Float(p).toString()));
 				} catch (Exception e) {
 					System.out.println(e);
 				}
 			}
 		}
-		context.write(new Text(key), new Text(value.toString().trim())); // pass
-																			// along
-																			// graph
-																			// structure
+		if (split[0].toString().trim().isEmpty())
+			context.write(key, new Text("###"));
+		else
+			context.write(key, new Text(split[0].trim())); // pass
+															// along
+															// graph
+															// structure
 	}
 }

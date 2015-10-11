@@ -179,4 +179,24 @@
       <format>text/x-wiki</format>
     </revision>
   </page>
- 
+  <page>
+    <title>AfghanistanMilitary</title>
+    <ns>0</ns>
+    <id>20</id>
+    <redirect title="Afghan Armed Forces" />
+    <revision>
+      <id>558328133</id>
+      <parentid>74466354</parentid>
+      <timestamp>2013-06-04T18:45:03Z</timestamp>
+      <contributor>
+        <username>EmausBot</username>
+        <id>11292982</id>
+      </contributor>
+      <minor />
+      <comment>Robot: Fixing double redirect to [[Afghan Armed Forces]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Afghan Armed Forces]][[Anarchism]][[AccessibleComputing]] {{R from CamelCase}}</text>
+      <sha1>5wyohrt34mvtrpmqw9pjcgkw8sa46ma</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>

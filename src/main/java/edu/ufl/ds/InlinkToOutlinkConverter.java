@@ -8,7 +8,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
@@ -18,13 +18,14 @@ public class InlinkToOutlinkConverter extends Configured implements Tool {
 	public static void main(String[] args) throws Exception {
 		int res = ToolRunner.run(new Configuration(),
 				new InlinkToOutlinkConverter(), args);
-		System.exit(res);
+		// System.exit(res);
 	}
 
 	public int run(String args[]) {
 		try {
 			Configuration conf = new Configuration();
-			conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", ";");
+			// conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator",
+			// ";");
 			conf.set("mapreduce.output.textoutputformat.separator", ";");
 			Job job = Job.getInstance(conf);
 			job.setJarByClass(InlinkToOutlinkConverter.class);
@@ -37,7 +38,7 @@ public class InlinkToOutlinkConverter extends Configured implements Tool {
 			job.setOutputValueClass(Text.class);
 
 			FileInputFormat.addInputPath(job, new Path(args[0]));
-			job.setInputFormatClass(KeyValueTextInputFormat.class);
+			job.setInputFormatClass(TextInputFormat.class);
 
 			FileOutputFormat.setOutputPath(job, new Path(args[1]));
 			job.setOutputFormatClass(TextOutputFormat.class);
