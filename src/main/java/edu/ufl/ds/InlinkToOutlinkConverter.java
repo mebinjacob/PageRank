@@ -26,7 +26,7 @@ public class InlinkToOutlinkConverter extends Configured implements Tool {
 			Configuration conf = new Configuration();
 			// conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator",
 			// ";");
-			conf.set("mapreduce.output.textoutputformat.separator", ";");
+			// conf.set("mapreduce.output.textoutputformat.separator", ";");
 			Job job = Job.getInstance(conf);
 			job.setJarByClass(InlinkToOutlinkConverter.class);
 
