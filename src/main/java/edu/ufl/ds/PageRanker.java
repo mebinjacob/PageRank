@@ -19,20 +19,8 @@ public class PageRanker extends Configured implements Tool {
 	public static int N = 0; // total number of pages.
 
 	public static void main(String[] args) throws Exception {
-<<<<<<< Updated upstream
 		ToolRunner.run(new Configuration(), new PageRanker(), args);
-=======
-		String finalOutputDirectory = args[2];
-		for (int i = 0; i < 8; i++) {
-			args[2] = finalOutputDirectory + "_" + i; // output directory
-			int res = ToolRunner.run(new Configuration(), new PageRanker(),
-					args);
-			// give output as input to next job
-			args[0] = args[2];
-		}
-		// move to finalDirectory
-		// Files.move(new File(args[2]), new File(finalOutputDirectory));
->>>>>>> Stashed changes
+
 	}
 
 	public int run(String args[]) {
@@ -46,18 +34,11 @@ public class PageRanker extends Configured implements Tool {
 				Job job = Job.getInstance(conf);
 				job.setJarByClass(PageRanker.class);
 
-<<<<<<< Updated upstream
 				job.setMapperClass(PageRankMapper.class);
 				job.setReducerClass(PageRankReducer.class);
 
 				job.setOutputKeyClass(Text.class);
 				job.setOutputValueClass(Text.class);
-=======
-			job.setOutputKeyClass(Text.class);
-			job.setOutputValueClass(Text.class);
-			FileInputFormat.addInputPath(job, new Path(args[0]));
-			job.setInputFormatClass(KeyValueTextInputFormat.class);
->>>>>>> Stashed changes
 
 				FileInputFormat.addInputPath(job, new Path(inputPath));
 				job.setInputFormatClass(TextInputFormat.class);
