@@ -16,7 +16,6 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class PageRanker extends Configured implements Tool {
 
-	public static int N = 0; // total number of pages.
 
 	public static void main(String[] args) throws Exception {
 		ToolRunner.run(new Configuration(), new PageRanker(), args);
@@ -50,6 +49,9 @@ public class PageRanker extends Configured implements Tool {
 				inputPath = outputPath;
 				outputPath = args[1] + "" + i;
 			}
+			// FileSystem fs = FileSystem.get(new URI(), )
+			// FileUtil.copyMerge(srcFS, srcDir, dstFS, dstFile, deleteSource,
+			// conf, addString)
 			return 0;
 
 		} catch (InterruptedException | ClassNotFoundException | IOException e) {
@@ -58,5 +60,4 @@ public class PageRanker extends Configured implements Tool {
 			return 2;
 		}
 	}
-
 }

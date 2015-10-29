@@ -18,7 +18,8 @@ public class InlinkToOutlinkMapper extends
 		}
 		if (val.trim().equals("===")) {
 			val = "";
-		}
+		} else
+			context.write(new Text(val.trim()), new Text(""));
 		for (int i = 1; i < titles.length; i++) {
 			context.write(new Text(titles[i]), new Text(val));
 		}

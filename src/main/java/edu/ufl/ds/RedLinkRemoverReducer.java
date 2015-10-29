@@ -12,6 +12,9 @@ public class RedLinkRemoverReducer extends Reducer<Text, Text, Text, Text> {
 
 		boolean found = false;
 		StringBuffer sb = new StringBuffer();
+		if(key.toString().equalsIgnoreCase("Cogency")){
+			System.out.println("asdas");
+		}
 		for (Text val : values) {
 			if (val.toString().equals("===")) {
 				found = true;
@@ -20,7 +23,7 @@ public class RedLinkRemoverReducer extends Reducer<Text, Text, Text, Text> {
 			}
 		}
 		if (found) {
-			System.out.println(key + " === " + sb.toString());
+//			System.out.println(key + " === " + sb.toString());
 			context.write(key, new Text(sb.toString()));
 		} else {
 			context.write(new Text("==="), new Text(sb.toString()));

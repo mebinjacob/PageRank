@@ -24,6 +24,7 @@ public class RedLinkRemover extends Configured implements Tool {
 
 	public int run(String args[]) {
 		try {
+			System.out.println("Start");
 			Configuration conf = new Configuration();
 
 			conf.set("xmlinput.start", "<page>");

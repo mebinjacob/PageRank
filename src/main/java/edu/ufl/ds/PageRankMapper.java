@@ -11,7 +11,7 @@ public class PageRankMapper extends Mapper<LongWritable, Text, Text, Text> {
 	@Override
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
-
+		System.out.println(key.toString());
 		String line = value.toString();
 		String[] outs = line.split("[\t]");
 		String node = outs[0];

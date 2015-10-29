@@ -17,7 +17,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class PageCount extends Configured implements Tool {
 
-	public static int n = 19999;
+	public static int n = 6273;
 
 	public static void main(String[] args) throws Exception {
 		int res = ToolRunner.run(new Configuration(), new PageCount(), args);

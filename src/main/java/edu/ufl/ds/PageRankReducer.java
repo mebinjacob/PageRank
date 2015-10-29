@@ -11,23 +11,22 @@ public class PageRankReducer extends Reducer<Text, Text, Text, Text> {
 	public void reduce(Text key, Iterable<Text> values, Context context)
 			throws IOException, InterruptedException {
 
-		long N = 19999;
 		double d = 0.85;
-		double rank = (1 - d) / N;
+		double rank = (1-d)/PageCount.n;
 		double remaining = 0;
 
 		StringBuffer sb = new StringBuffer();
 		String prefix = "";
 		for (Text t : values) {
 			try {
-				remaining += Double.parseDouble(t.toString());
+				remaining += (Double.parseDouble(t.toString()));
 			} catch (Exception e) {
 				sb.append(prefix + t.toString());
 				prefix = "\t";
 			}
 		}
 
-		rank += d * remaining;
+		rank +=  remaining*d;
 
 		context.write(key, new Text(rank + "\t" + sb.toString()));
 

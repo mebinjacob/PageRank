@@ -18,7 +18,7 @@ public class PageCountReducer extends
 			sum += v.get();
 		}
 		result.set(sum);
-		PageCount.n = sum;
+		//PageCount.n = sum;
 		context.write(key, result);
 	}
 
